@@ -1,6 +1,6 @@
 name: Delete Older Releases
 description: delete older releases of any repo
-author: dev-drprasad
+author: s00d
 
 branding:
   color: red
