@@ -10,6 +10,8 @@ Add following step to your workflow:
     repo: <owner>/<repoName> # defaults to current repo
     keep_latest: 3
     delete_tag_pattern: beta # defaults to ""
+    delete_type: 'release'
+    delete_branch: 'master'
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
