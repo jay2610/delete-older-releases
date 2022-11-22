@@ -57,6 +57,12 @@ let deletePattern = process.env.INPUT_DELETE_TAG_PATTERN || "";
 if (deletePattern) {
   console.log(`releases containing ${deletePattern} will be targeted`);
 }
+
+let delete_branch = process.env.INPUT_TARGET_BRANCH || "master";
+let delete_type = process.env.INPUT_DELETE_TYPE || "release";
+console.log(`${delete_type} from ${delete_branch} will be targeted`);
+
+
 const commonOpts = {
   host: "api.github.com",
   port: 443,
@@ -79,7 +85,13 @@ async function deleteOlderReleases(keepLatest) {
     data = data || [];
     // filter for delete_pattern
     const activeMatchedReleases = data.filter(
-      ({ draft, tag_name }) => !draft && tag_name.indexOf(deletePattern) !== -1
+      ({ draft, tag_name, prerelease, target_commitish }) => !draft
+        && delete_branch === target_commitish
+        && tag_name.indexOf(deletePattern) !== -1
+        && (
+          (delete_type === 'release' && prerelease === false)
+          || (delete_type === 'prerelease' && prerelease === true)
+        )
     );
 
     if (activeMatchedReleases.length === 0) {

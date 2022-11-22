@@ -19,7 +19,13 @@ inputs:
   delete_tag_pattern:
     description: part of the tag name. Example, if you want to delete 0.0.1-beta and 0.0.2-beta but not 0.0.1 then set this to just "beta". If not set then it will target all releases.
     required: false
+  delete_type:
+    description: release or prerelease
+    required: false
+  delete_branch:
+    description: delete branch
+    required: false
 
 runs:
-  using: "node12"
+  using: "node16"
   main: "index.js"
