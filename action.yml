@@ -22,9 +22,6 @@ inputs:
   delete_type:
     description: release or prerelease
     required: false
-  target_branch:
-    description: delete branch
-    required: false
 
 runs:
   using: "node16"
