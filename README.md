@@ -1,11 +1,11 @@
-# GitHub Action: Delete older releases
+# GitHub Action: Delete older releases and tags
 
 This action deletes older releases of given repo
 
 Add following step to your workflow:
 
 ```yaml
-- uses: s00d/delete-older-releases0.2.1
+- uses: jay2610/delete-older-releases@1.0.0
   with:
     repo: <owner>/<repoName> # defaults to current repo
     keep_latest: 3
