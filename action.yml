@@ -1,6 +1,6 @@
-name: Delete Older Releases updated
+name: Delete Older Releases and Tags Updated
 description: delete older releases of any repo
-author: s00d
+author: jay2610
 
 branding:
   color: red
@@ -22,7 +22,7 @@ inputs:
   delete_type:
     description: release or prerelease
     required: false
-  delete_branch:
+  target_branch:
     description: delete branch
     required: false
 
