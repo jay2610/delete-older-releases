@@ -58,7 +58,7 @@ if (deletePattern) {
   console.log(`releases containing ${deletePattern} will be targeted`);
 }
 
-let delete_branch = process.env.INPUT_DELETE_BRANCH || "master";
+let delete_branch = process.env.INPUT_TARGET_BRANCH || "master";
 let delete_type = process.env.INPUT_DELETE_TYPE || "release";
 console.log(`${delete_type} from ${delete_branch} will be targeted`);
 
