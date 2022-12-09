@@ -11,7 +11,7 @@ Add following step to your workflow:
     keep_latest: 3
     delete_tag_pattern: beta # defaults to ""
     delete_type: 'release'
-    delete_branch: 'master'
+    target_branch: 'master'
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
