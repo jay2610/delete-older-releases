@@ -58,9 +58,6 @@ if (deletePattern) {
   console.log(`releases containing ${deletePattern} will be targeted`);
 }
 
-let delete_type = process.env.INPUT_DELETE_TYPE || "release";
-console.log(`${delete_type} will be targeted`);
-
 
 const commonOpts = {
   host: "api.github.com",
