@@ -4,12 +4,12 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/s0d/delete-older-releases"
+    "url": "git+https://github.com/jayp2610/delete-older-releases"
   },
   "keywords": [],
   "author": "REDDY PRASAD",
   "license": "ISC",
-  "homepage": "https://github.com/s00d/delete-older-releases",
+  "homepage": "https://github.com/jayp2610/delete-older-releases",
   "dependencies": {
     "octokit": "^2.0.10"
   }
