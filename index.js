@@ -86,7 +86,7 @@ async function deleteOlderReleases(keepLatest) {
             method: "GET",
           });
         if (!res.ok) {
-          throw new Error(`Error! status: ${response.status}`);
+          throw new Error(`Error! status: ${res.status}`);
         }
         const { data } = await res.json();
         if (data.length === 0) {
