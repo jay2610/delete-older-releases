@@ -11,6 +11,6 @@
   "license": "ISC",
   "homepage": "https://github.com/jayp2610/delete-older-releases",
   "dependencies": {
-    "@octokit/rest": "latest"
+    "@octokit/rest": "^19.0.5"
   }
 }
