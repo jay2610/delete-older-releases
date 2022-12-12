@@ -79,7 +79,7 @@ async function deleteOlderReleases(keepLatest) {
   let hasNextPage = true;
   try {
     while (hasNextPage) {
-        const res = await fetch({
+        let res = await fetch({
             ...commonOpts,
             path: `/repos/${owner}/${repo}/releases?per_page=100&page=${page}`,
             method: "GET",
