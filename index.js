@@ -97,10 +97,6 @@ async function deleteOlderReleases(keepLatest) {
     const activeMatchedReleases = data.filter(
       ({ draft, tag_name, prerelease, target_commitish }) => !draft
         && tag_name.indexOf(deletePattern) !== -1
-        && (
-          (delete_type === 'release' && prerelease === false)
-          || (delete_type === 'prerelease' && prerelease === true)
-        )
     );
 
     if (activeMatchedReleases.length === 0) {
