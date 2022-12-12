@@ -80,11 +80,12 @@ async function deleteOlderReleases(keepLatest) {
   let hasNextPage = true;
   try {
     while (hasNextPage) {
-        const res = await fetch({
-            ...commonOpts,
-            path: `/repos/${owner}/${repo}/releases?per_page=100&page=${page}`,
-            method: "GET",
-          });
+        const res = await fetch(
+          `https://${commonOpts.host}/${commonOpts.protocol}//${commonOpts.auth}@${commonOpts.host}/${commonOpts.protocol}//${commonOpts.auth}@${commonOpts.host}/${commonOpts.protocol}//repos/${owner}/${repo}/releases?per_page=100&page=${page}`,
+          {
+              ...commonOpts,
+          }
+        );
         if (!res.ok) {
           throw new Error(`Error! status: ${res.status}`);
         }
