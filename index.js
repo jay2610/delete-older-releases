@@ -1,5 +1,5 @@
 const fetch = require("./fetch");
-const Octokit = require ('@octokit');
+const Octokit = require ('@octokit/rest');
 const octokit = new Octokit({
   auth: '${GITHUB_TOKEN}'
 })
