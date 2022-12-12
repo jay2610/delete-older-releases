@@ -58,6 +58,9 @@ if (deletePattern) {
   console.log(`releases containing ${deletePattern} will be targeted`);
 }
 
+let delete_type = process.env.INPUT_DELETE_TYPE || "release";
+console.log(`${delete_type} will be targeted`);
+
 
 const commonOpts = {
   host: "api.github.com",
@@ -94,6 +97,10 @@ async function deleteOlderReleases(keepLatest) {
     const activeMatchedReleases = data.filter(
       ({ draft, tag_name, prerelease, target_commitish }) => !draft
         && tag_name.indexOf(deletePattern) !== -1
+        && (
+          (delete_type === 'release' && prerelease === false)
+          || (delete_type === 'prerelease' && prerelease === true)
+        )
     );
 
     if (activeMatchedReleases.length === 0) {
