@@ -84,10 +84,19 @@ async function deleteOlderReleases(keepLatest) {
   let hasNextPage = true;
   try {
     while (hasNextPage) {
-        const res = await fetch(
-          `${commonOpts.protocol}//${commonOpts.host}/${commonOpts.auth}/repos/${owner}/${repo}/releases?per_page=100&page=${page}`,
-          commonOpts
-        );
+      //get release from octokit
+      const res = await octokit.request(
+        "GET /repos/{owner}/{repo}/releases",
+        {
+          owner,
+          repo,
+          per_page: 100,
+          page,
+        }
+       // const res = await fetch(
+       //   `${commonOpts.protocol}//${commonOpts.host}/${commonOpts.auth}/repos/${owner}/${repo}/releases?per_page=100&page=${page}`,
+       //   commonOpts
+       // );
         if (!res.ok) {
           throw new Error(`Error! status: ${res.status}`);
         }
