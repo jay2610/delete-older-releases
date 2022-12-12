@@ -1,5 +1,7 @@
 const fetch = require("./fetch");
-
+const octokit = new Octokit({
+  auth: 'YOUR-TOKEN'
+})
 if (!process.env.GITHUB_TOKEN) {
   console.error("🔴 no GITHUB_TOKEN found. pass `GITHUB_TOKEN` as env");
   process.exitCode = 1;
@@ -80,12 +82,12 @@ async function deleteOlderReleases(keepLatest) {
   let hasNextPage = true;
   try {
     while (hasNextPage) {
-        const res = await fetch(
-          `https://${commonOpts.host}/${commonOpts.protocol}//${commonOpts.auth}@${commonOpts.host}/${commonOpts.protocol}//${commonOpts.auth}@${commonOpts.host}/${commonOpts.protocol}//repos/${owner}/${repo}/releases?per_page=100&page=${page}`,
-          {
-              ...commonOpts,
-          }
-        );
+        const res = await octokit.rest.repos.listReleases({
+            owner,
+            repo,
+            per_page: 100,
+            page,
+        });     
         if (!res.ok) {
           throw new Error(`Error! status: ${res.status}`);
         }
