@@ -75,15 +75,19 @@ const commonOpts = {
 
 async function deleteOlderReleases(keepLatest) {
   let releaseIdsAndTags = [];
+  let releaseIdsAndTagsData = [];
   let page = 1;
   let hasNextPage = true;
   try {
     while (hasNextPage) {
-        let res = await fetch({
+        const res = await fetch({
             ...commonOpts,
             path: `/repos/${owner}/${repo}/releases?per_page=100&page=${page}`,
             method: "GET",
           });
+        if (!res.ok) {
+          throw new Error(`Error! status: ${response.status}`);
+        }
         const { data } = await res.json();
         if (data.length === 0) {
             hasNextPage = false;
