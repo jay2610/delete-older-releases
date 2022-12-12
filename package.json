@@ -9,8 +9,5 @@
   "keywords": [],
   "author": "REDDY PRASAD",
   "license": "ISC",
-  "homepage": "https://github.com/jayp2610/delete-older-releases",
-  "dependencies": {
-    "@octokit/rest": "^19.0.5"
-  }
+  "homepage": "https://github.com/jayp2610/delete-older-releases"
 }
