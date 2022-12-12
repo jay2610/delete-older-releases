@@ -10,5 +10,7 @@
   "author": "REDDY PRASAD",
   "license": "ISC",
   "homepage": "https://github.com/s00d/delete-older-releases",
-  "dependencies": {}
+  "dependencies": {
+    "octokit": "^2.0.10"
+  }
 }
