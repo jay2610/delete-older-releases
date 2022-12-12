@@ -1,4 +1,6 @@
 const fetch = require("./fetch");
+var octokit = require('@octokit');
+
 const octokit = new Octokit({
   auth: '${GITHUB_TOKEN}'
 })
