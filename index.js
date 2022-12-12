@@ -91,12 +91,13 @@ async function deleteOlderReleases(keepLatest) {
         per_page: 100,
         page,
       });
+      resp = JSON.stringify(res)
        // const res = await fetch(
        //   `${commonOpts.protocol}//${commonOpts.host}/${commonOpts.auth}/repos/${owner}/${repo}/releases?per_page=100&page=${page}`,
        //   commonOpts
        // );
         if (!res.ok) {
-          throw new Error(`Error! status: ${res}`);
+          throw new Error(`Error! status: ${resp}`);
         }
         const { data } = await res.json();
         if (data.length === 0) {
