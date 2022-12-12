@@ -75,13 +75,24 @@ const commonOpts = {
 
 async function deleteOlderReleases(keepLatest) {
   let releaseIdsAndTags = [];
+  let page = 1;
+  let hasNextPage = true;
   try {
-    let data = await fetch({
-      ...commonOpts,
-      path: `/repos/${owner}/${repo}/releases?per_page=100`,
-      method: "GET",
-    });
-    data = data || [];
+    while (hasNextPage) {
+        const res = await fetch({
+            ...commonOpts,
+            path: `/repos/${owner}/${repo}/releases?per_page=100&page=${page}`,
+            method: "GET",
+          });
+        const { data } = await res.json();
+        if (data.length === 0) {
+            hasNextPage = false;
+            continue;
+        }
+        releaseIdsAndTagsData = [...releaseIdsAndTagsData, ...data];
+        page++;
+    }
+    data = releaseIdsAndTagsData || [];
     // filter for delete_pattern
     const activeMatchedReleases = data.filter(
       ({ draft, tag_name, prerelease, target_commitish }) => !draft
