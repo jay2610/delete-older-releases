@@ -2,9 +2,8 @@ const fetch = require("./fetch");
 const Octokit = require("@octokit/rest");
 
 const octokit = new Octokit({
-    auth: process.env.GITHUB_TOKEN
-}); 
-
+  auth: process.env.GITHUB_TOKEN,
+})
 if (!process.env.GITHUB_TOKEN) {
   console.error("🔴 no GITHUB_TOKEN found. pass `GITHUB_TOKEN` as env");
   process.exitCode = 1;
